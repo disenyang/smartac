@@ -1,99 +1,85 @@
-//生成框架代码配置
-{
-	//业务名称,用于生成模块的文件名称
-	"name":"shortcut",
-	//文件路径
-	"filePath":"/Users/gaoyang/Desktop/smart/test",
-	//路由根状态
-	"rootState":"cms.content.manage.ryg.home",
-	//创建者
+//生成angularjs框架代码配置,此文件必须是标准的json数据，如果要拷贝，请拷贝copy.me
+{	//业务名称,用于生成模块的文件名称
+	"name":"commissionConfig",
+	//标题
+	"title":"佣金规则列表",
+	//angularjs模块名称
+	"angularModel":"cms",
+	//此模块的根状态
+	"rootState":"cms.member.integral_mall",
+	//生成页面的作者
 	"author":"gaoyang",
-	//业务标题,注释使用
-	"title":"快捷入口",
-	//列表配置,name:后台存储名称;title:显示名称;required:是否必填，默认false;show:是否在页面展示,默认false,requiredMsg:不填时提示信息,search:是否是搜索字段,true:是,false:否，默认否
+	//生成的文件目录(不包括业务名称)
+	"filePath":"/Users/gaoyang/Documents/rongyi_cms_ry_settlement/business/settlement",
+	//资源路径（相对路径）
+	"rootWebPath":"business/settlement",
+	//服务文件是否在内部,默认在内部，一般不用修改
+	"serviceIn":true,
+	//路由文件路径
+	"routerFile":"/Users/gaoyang/Documents/rongyi_cms_ry_settlement/business/settlement/router/router.js",
+	//主键列名称,明细、修改页面传入的值
+	"pk":"id",
+	//是否分野
+	"page":true,
+	//是否有操作列（如果有此配置，则列表页面自动加入操作列）
+	"operate":false,
+	//配置列
 	"columns":[
-		{
+		{	
+			//列名称
 			"name":"id",
-			"title":"内容id",
-			"required":false,
-			"show":false
-		},
-		{
-			"name":"modelId",
-			"title":"模版Id",
+			//列显示名称
+			"title":"主键",
+			//是否必填，设置为必填则保存或修改时要进行验证，默认false
 			"required":true,
-			"show":false
+			//数据类型,int:表示数值,date:表示日期（页面会显示日期控件）,string:文本,默认string
+			"dataType":"date"
+			//值列表，每个值代表什么意思
+			"values":[
+				{"k":"0","v":"全部"},
+				{"k":"1","v":"导购"},
+				{"k":"2","v":"买手"}
+			]
 		},
-		{
-			"name":"publishBeginAt",
-			"title":"发布开始时间",
-			"required":true,
-			"requiredMsg":"请选择开始时间",
-			"show":true,
-			"search":true
-		},
-		{
-			"name":"publishEndAt",
-			"title":"发布结束时间",
-			"required":true,
-			"show":true
-		},
-		{
-			"name":"picNames",
-			"title":"图片的名字",
-			"required":true,
-			"show":true
-		},
-		{
-			"name":"createUser",
-			"title":"创建人",
-			"required":false,
-			"show":false
-		},
-		{
-			"name":"updateUser",
-			"title":"修改人",
-			"required":false,
-			"show":false
-		},
-		{
-			"name":"status",
-			"title":"操作状态",
-			"required":true,
-			"show":false
-		},
-		{
-			"name":"positionId",
-			"title":"位置id",
-			"required":true,
-			"show":false
-		}
+		
 	],
-	//服务配置
+	//详情页面配置,不写则不会生成页面，否则生成页面
+	"detailPage":{
+		//显示的列,不配置则默认显示全部
+		"columns":["id"]
+	},
+	//列表页面配置,不写则不会生成页面，否则生成页面
+	"listPage":{
+		//显示的列,不配置则默认显示全部
+		"columns":["id"],
+		//使用的查询列，如果配置则在列表页面上部生成查询条件，不配置则不会生成
+		"searchColumns":["id"]
+	},
+	//保存/修改页面配置,不写则不会生成页面，否则生成页面
+	"savePage":{
+		//显示的列,不配置则默认显示全部
+		"columns":["id"]
+	},
+	//服务接口
 	"services":{
-		//保存服务
-		"save":{
-			"url":"/content-view/homePage/saveOrUpdateQuick",
-			"method":"post"
-		},
-		//更新服务
-		"update":{
-			"url":"/content-view/homePage/saveOrUpdateQuick",
-			"method":"post"
-		},
-		//删除服务
-		"delete":{
-			"url":"/content-view/homePage/position/delete",
-			"method":"post"
-		},
-		//查询详情服务
+		//详情服务
 		"get":{
 			"url":"/content-view/homePage/position/detail",
 			"method":"post"
 		},
-		//搜索服务
+		//查询服务
 		"search":{
-			"url":"/content-view/homePage/position/list",
+			"url":"/easy-tms/v2/commissionConfig/detail",
+			"method":"post"
+		},
+		//保存服务
+		"save":{
+			"url":"/easy-tms/v2/commissionConfig/save",
+			"method":"post"
+		},
+		//修改服务
+		"update":{
+			"url":"/easy-tms/v2/commissionConfig/update",
 			"method":"post"
 		}
 	}

@@ -782,7 +782,7 @@ function getListHtml(config){
     	str = str +"\n\t<div class=\"btns\">"
     				+"\n\t\t<a class=\"cms-btn cms-btn-heavy\" ui-sref=\""+config.rootState+"."+config.name+".new\">新建"+config.title+"</a>"
     				+"\n\t</div>"
-    				+"\n\t\t<a class=\"cms-btn\" ng-click=\"back()\">返回</a>";
+    				+"\n\t\t";
     }
 
 	str = str +"\n\t<div class=\"container-fluid\">";
@@ -859,10 +859,10 @@ function getListHtml(config){
 	for(var i=0;i<columnsDo.length;i++){
 		
 		var column = columnsDo[i];
-		str = str +"\n"+getTabString(3)+"<td>"+column.title+"</td>";
+		str = str +"\n"+getTabString(3)+"<th>"+column.title+"</th>";
 	}
     if(config.operate){
-	   str = str +"\n"+getTabString(3)+"<td>操作</td>";
+	   str = str +"\n"+getTabString(3)+"<th>操作</th>";
     }
 	str = str +"\n"+getTabString(2)+"</tr>";
 	str = str +"\n"+getTabString(2)+"<tr ng-repeat=\"row in list\">";
@@ -1157,7 +1157,7 @@ function executeCreate(configFile){
 
 			//服务
             if(config.serviceIn){
-                folderPath = config.servicePath+"/"+name+"/services";
+                folderPath = config.filePath+"/"+name+"/services";
                 if(!fs.existsSync(folderPath)){
                     fs.mkdirSync(folderPath, 0777);
                 }
